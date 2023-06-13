@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,5 +22,18 @@ public class EnemyManager : MonoBehaviour
             enemyCars[i].SetActive(true);
             i++;
         }
+    }
+
+    private void Update()
+    {
+        for (int j = 0; j < enemyCars.Count; j++)
+        {
+            if (enemyCars[j] == null) enemyCars.Remove(enemyCars[j]);
+        }
+    }
+
+    private void WonGame()
+    {
+        if(enemyCars == null) print("won"); 
     }
 }
