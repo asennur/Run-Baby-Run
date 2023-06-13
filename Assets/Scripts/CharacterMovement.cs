@@ -10,12 +10,8 @@ public class CharacterMovement : MonoBehaviour
     public int _leftTurnAngle = 11111;
 
     private Vector3 carRayDirection = new Vector3(0, 1, 0);
-    private Vector3 carRightDirection = new Vector3(1, 0, 0);
-    private Vector3 carLeftDirection = new Vector3(-1, 0, 0);
     
     private Vector3 _frontPos = new Vector3(0, 0.5f, 0);
-    private Vector3 _rightPos = new Vector3(0.45f, 0, 0);
-    private Vector3 _leftPos = new Vector3(-0.45f, 0, 0);
 
     private Vector3 _turningPos;
     
@@ -45,37 +41,6 @@ public class CharacterMovement : MonoBehaviour
         RaycastHit2D frontHit = Physics2D.Raycast(transform.position+_frontPos, carRayDirection, 0.1f);
         if (frontHit.collider != null) if(frontHit.transform.gameObject.name == "Terrain") speed = 0;
 
-        #region useless
-        /*RaycastHit2D rightHit = Physics2D.Raycast(transform.position+_rightPos, carRightDirection, 0.1f);
-        if (rightHit.collider != null)
-        {
-            if (rightHit.transform.gameObject.name == "Terrain")
-            {
-                if (transform.eulerAngles.z == 0) _rightTurnAngle = 270;
-                else _rightTurnAngle = Mathf.RoundToInt(transform.eulerAngles.z - 90);
-            }
-            else _rightTurnAngle = 11111;
-        }
-        else _rightTurnAngle = 11111;
-
-
-        RaycastHit2D leftHit = Physics2D.Raycast(transform.position+_leftPos, carLeftDirection, 0.1f);
-        if (leftHit.collider != null)
-        {
-            if (leftHit.transform.gameObject.name == "Terrain")
-            {
-                if (transform.eulerAngles.z == 270) _leftTurnAngle = 0;
-                else _leftTurnAngle = Mathf.RoundToInt(transform.eulerAngles.z + 90);            
-            }
-            else _leftTurnAngle = 11111;
-        }
-        else _rightTurnAngle = 11111;
-
-        print(" left: " + _leftTurnAngle);
-        print(" right: " + _rightTurnAngle);*/
-        #endregion
-        print(_rightTurnAngle);
-        
         if (Input.GetKeyDown(KeyCode.D) && transform.eulerAngles.z != 180) 
             if(Math.Abs(0 - _rightTurnAngle) >= 5 && Mathf.Abs(0 - _leftTurnAngle) >= 5) 
                 RotateCar(0);
@@ -104,45 +69,21 @@ public class CharacterMovement : MonoBehaviour
         {
             carRayDirection = new Vector3(1, 0, 0);
             _frontPos = new Vector3(0.5f, 0, 0);
-
-            carRightDirection = new Vector3(0, -1, 0);
-            _rightPos = new Vector3(0, -0.5f, 0);
-            
-            carLeftDirection = new Vector3(0, 1, 0);
-            _leftPos = new Vector3(0, 0.5f, 0);
         } 
         else if (rotatevalue == 90)
         {
             carRayDirection = new Vector3(0, 1, 0);
             _frontPos = new Vector3(0, 0.5f, 0);
-
-            carRightDirection = new Vector3(1, 0, 0);
-            _rightPos = new Vector3(0.5f, 0, 0);
-
-            carRightDirection = new Vector3(-1, 0, 0);
-            _rightPos = new Vector3(-0.5f, 0, 0);
         } 
         else if (rotatevalue == 180)
         {
             carRayDirection = new Vector3(-1,0,0);
             _frontPos = new Vector3(-0.5f, 0, 0);
-
-            carRightDirection = new Vector3(0, 1, 0);
-            _rightPos = new Vector3(0, 0.5f, 0);
-
-            carRightDirection = new Vector3(0, -1, 0);
-            _rightPos = new Vector3(0, -0.5f, 0);
         } 
         else if (rotatevalue == 270)
         {
             carRayDirection = new Vector3(0, -1, 0);
             _frontPos = new Vector3(0, -0.5f, 0);
-
-            carRightDirection = new Vector3(-1, 0, 0);
-            _rightPos = new Vector3(-0.5f, 0, 0);
-
-            carRightDirection = new Vector3(1, 0, 0);
-            _rightPos = new Vector3(0.5f, 0, 0);
         } 
     }
 }
