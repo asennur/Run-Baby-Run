@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -30,10 +31,6 @@ public class EnemyManager : MonoBehaviour
         {
             if (enemyCars[j] == null) enemyCars.Remove(enemyCars[j]);
         }
-    }
-
-    private void WonGame()
-    {
-        if(enemyCars == null) print("won"); 
+        if(enemyCars.Count == 0) SceneManager.LoadScene("WinScene"); 
     }
 }

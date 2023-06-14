@@ -53,6 +53,8 @@ public class CharacterMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S) && transform.rotation.eulerAngles.z != 90) 
             if(Mathf.Abs(270 - _rightTurnAngle) >= 5 && Mathf.Abs(270 - _leftTurnAngle) >= 5) 
                 RotateCar(270);
+        
+        print(movementMemory);
     }
 
     private void RotateCar(int rotatevalue)

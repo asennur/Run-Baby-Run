@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class EnemyMovement : MonoBehaviour
     {
         transform.Translate(new Vector3(1,0,0)*speed*Time.deltaTime);
 
-        if (Vector3.Distance(CharacterMovement.Instance.movementMemory[i].Item1, transform.position) < 0.2f)
+        if (Vector3.Distance(CharacterMovement.Instance.movementMemory[i].Item1, transform.position) < 0.1f)
         {
             transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 
                 CharacterMovement.Instance.movementMemory[i].Item2);
@@ -23,7 +24,7 @@ public class EnemyMovement : MonoBehaviour
         {
             Destroy(other.gameObject);
             Destroy(this.gameObject);
-            print("Game Over");
+            SceneManager.LoadScene("LostScene");
         }
         else if (other.CompareTag("EnemyCar"))
         {
