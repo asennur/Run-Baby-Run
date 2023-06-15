@@ -5,7 +5,7 @@ public class CharacterMovement : MonoBehaviour
 {
     private static CharacterMovement instance;
 
-    private int speed = 2;
+    private float speed = 4.5f;
     public int _rightTurnAngle = 11111;
     public int _leftTurnAngle = 11111;
 
@@ -60,7 +60,7 @@ public class CharacterMovement : MonoBehaviour
     private void RotateCar(int rotatevalue)
     {
         SetPositions(rotatevalue);
-        speed = 2;
+        speed = 4.5f;
         transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, rotatevalue);
         movementMemory.Add(new Tuple<Vector3, int>(transform.position, rotatevalue));
     }

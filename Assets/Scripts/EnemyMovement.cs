@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class EnemyMovement : MonoBehaviour
 {
     private int i = 0;
-    private int speed = 2;
+    private float speed = 4.5f;
     private void Update()
     {
         transform.Translate(new Vector3(1,0,0)*speed*Time.deltaTime);
